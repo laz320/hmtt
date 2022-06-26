@@ -6,6 +6,9 @@ import store from './store'
 import Vant from 'vant'
 import 'vant/lib/index.css'
 import 'amfe-flexible'
+
+// 7 字体图标
+import '@/styles/icon.less'
 Vue.use(Vant)
 
 Vue.config.productionTip = false
