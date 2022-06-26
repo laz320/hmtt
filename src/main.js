@@ -4,7 +4,10 @@ import router from './router'
 import store from './store'
 // 1 导入所有组件
 import Vant from 'vant'
-import 'vant/lib/index.css'
+// import 'vant/lib/index.css'
+// 16 用less 不用css
+import 'vant/lib/index.less'
+
 import 'amfe-flexible'
 
 // 7 字体图标
