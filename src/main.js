@@ -2,6 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+// 1 导入所有组件
+import Vant from 'vant'
+import 'vant/lib/index.css'
+import 'amfe-flexible'
+Vue.use(Vant)
 
 Vue.config.productionTip = false
 
