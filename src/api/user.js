@@ -1,5 +1,7 @@
 // 32
 import request from '@/utils/request'
+// 十二 只有在VUE组件中才能用this.$store 在ji中没有这个this 所以只能
+import store from '@/store'
 
 /**
  * 33 获取短信验证码
@@ -26,6 +28,17 @@ export const login = ({ mobile, code }) => {
     data: {
       mobile,
       code
+    }
+  })
+}
+
+// 九 封装接口 获取用户的个人资料
+export const getUserInfo = () => {
+  return request({
+    url: 'user',
+    // 十二
+    headers: {
+      Authorization: 'Bearer ' + store.state.user.token
     }
   })
 }

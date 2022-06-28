@@ -7,7 +7,7 @@ import Layout from '@/views/Layout'
 const Home = () => import('@/views/Home')
 const Video = () => import('@/views/Video')
 const Question = () => import('@/views/Question')
-const My = () => import('@/views/Home')
+const My = () => import('@/views/My')
 
 // 12
 const Login = () => import('@/views/Login')
@@ -34,7 +34,9 @@ const routes = [
         component: Question
       }, {
         path: 'my',
-        component: My
+        component: My,
+        // 二
+        name: 'my'
       }
     ]
   },

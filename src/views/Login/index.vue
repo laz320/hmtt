@@ -3,7 +3,9 @@
     <!-- 14 NavBar 导航栏 -->
     <!-- <van-nav-bar title="登录" left-arrow /> -->
     <!-- 15 用插槽修改图标 把单标签改为双标签  slot插槽-->
-    <van-nav-bar title="登录">
+
+    <!-- 七 绑定点击事件 往回退一步的操作 -->
+    <van-nav-bar title="登录" @click-left="$router.back()">
       <van-icon name="cross" slot="left" />
     </van-nav-bar>
     <!-- 20 form 表单 -->
@@ -21,7 +23,10 @@
       >
         <!-- 23 字体图标  插槽的方式(先把单标签改为双标签)-->
         <!-- 29 校验规则 pattern：-->
-        <i class="toutiao toutiao-shouji" slot="left-icon"></i>
+        <!-- <i class="toutiao toutiao-shouji" slot="left-icon"></i> -->
+
+        <!-- 56 改写 -->
+        <MyIcon name="shouji" slot="left-icon"></MyIcon>
       </van-field>
       <van-field
         v-model.trim="code"
@@ -101,6 +106,8 @@ export default {
         console.log(res)
         // 50
         this.$store.commit('setUser', res.data.data)
+        // 一 登录成功后的跳转
+        this.$router.push({ name: 'my' })
       } catch (err) {
         console.log(err)
       }

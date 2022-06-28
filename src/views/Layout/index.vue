@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 5 标签栏的路由模式 -->
-    <router-view />
+    <router-view class="main" />
     <van-tabbar route>
       <van-tabbar-item replace to="/home" icon="home-o">
         首页
@@ -43,11 +43,15 @@ export default {
 
 <style scoped lang='less'>
 // 9
-.toutiao{
+.toutiao {
   font-size: 40px;
 }
 //   /deep/ 深度选择器
-/deep/ .van-tabbar-item__text{
+/deep/ .van-tabbar-item__text {
   font-size: 20px !important;
+}
+.main {
+  padding-bottom: 100px;
+  background-color: #f5f7f9;
 }
 </style>

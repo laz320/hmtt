@@ -1,4 +1,4 @@
-// 31
+// 31 封装根路径
 import axios from 'axios'
 const instance = axios.create({
   baseURL: 'http://toutiao.itheima.net/v1_0',
