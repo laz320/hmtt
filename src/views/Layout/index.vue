@@ -1,7 +1,11 @@
 <template>
   <div>
     <!-- 5 标签栏的路由模式 -->
-    <router-view class="main" />
+    <div>
+      <keep-alive :include="['Home']">
+        <router-view class="main" />
+      </keep-alive>
+    </div>
     <van-tabbar route>
       <van-tabbar-item replace to="/home" icon="home-o">
         首页
@@ -29,6 +33,7 @@
 
 <script>
 export default {
+  name: 'Home',
   created () { },
   data () {
     return {}

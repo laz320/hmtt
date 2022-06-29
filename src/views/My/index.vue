@@ -19,6 +19,7 @@
             height="1.76rem"
             :src="userInfo.photo"
           />
+          <!-- 十四 -->
           <span>{{ userInfo.name }}</span>
         </div>
         <div class="button">编辑资料</div>
@@ -27,7 +28,7 @@
         <li>
           <p>8</p>
           <!-- <p>{{userInfo.art_count}}</p> -->
-          <p>头条</p>
+                    <p>头条</p>
         </li>
         <li>
           <p>66</p>
