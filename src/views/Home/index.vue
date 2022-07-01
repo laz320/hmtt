@@ -61,6 +61,10 @@ import ChannelPanel from './components/ChannelPanel.vue'
 import ArticleList from '@/components/ArticleList.vue'
 // 二十
 import { getMyChannels } from '@/api/home'
+import { getItem } from '@/utils/storage'
+// 设置变量
+const CHANNELS = 'CHANNELS'
+
 export default {
   // 十九
   name: 'Home',
@@ -78,19 +82,27 @@ export default {
   },
   methods: {
     // 二十一
+    // 1、没有登录第一次打开app，本地存储没有， 只能发送ajax请求
+    // 2、没有登录，但是第二次打开，有可能修改过 这样的话本地存储就有值，就去本地存储拿
+    // 3、有登录就发送ajax拿
     async getMyChannels () {
-      try {
-        const res = await getMyChannels()
-        console.log('res', res)
-        // 二十三
-        this.channels = res.data.data.channels
-      } catch (err) {
-        console.log(err)
+      const channels = getItem(CHANNELS)
+      if (!(this.$store.state.user && this.$store.state.user.token) && channels) {
+        this.channels = channels
+      } else {
+        try {
+          const res = await getMyChannels()
+          console.log('res', res)
+          // 二十三
+          this.channels = res.data.data.channels
+        } catch (err) {
+          console.log(err)
+        }
       }
     }
   },
   computed: {},
-  watch: {},
+
   filters: {},
   components: {
     // 二十六 注册

@@ -56,7 +56,9 @@
 
 <script>
 // lllll
-import { getAllArticleList } from '@/api/home'
+import { getAllArticleList, saveChannels } from '@/api/home'
+import { setItem } from '@/utils/storage'
+const CHANNELS = 'CHANNELS'
 export default {
   // lllll
   name: 'ChannelPanel',
@@ -101,6 +103,8 @@ export default {
     // 3333 子向父传值
     onClick (index) {
       if (this.isCloseShow) {
+        // 推荐不能删除 需排除
+        if (index === 0) return
         // 4444 删除
         const obj = this.channels[index]
         this.channels.splice(index, 1)
@@ -115,7 +119,29 @@ export default {
     }
   },
   computed: {},
-  watch: {},
+  watch: {
+    channels: {
+      async handler (newVal) {
+        const arr = []
+        if (this.$store.state.user && this.$store.state.user.token) {
+          // 登录过
+          newVal.forEach((item, index) => {
+            arr.push({ id: item.id, seq: index })
+          })
+          //
+          try {
+            const res = await saveChannels(arr)
+            console.log(res)
+          } catch (err) {
+            console.log(err)
+          }
+        } else {
+          setItem(CHANNELS, newVal)
+        }
+      },
+      deep: true
+    }
+  },
   filters: {},
   components: {}
 }

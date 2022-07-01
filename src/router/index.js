@@ -11,6 +11,7 @@ const My = () => import('@/views/My')
 
 // 12
 const Login = () => import('@/views/Login')
+const Search = () => ('@/views/Search')
 
 Vue.use(VueRouter)
 
@@ -44,6 +45,10 @@ const routes = [
   {
     path: '/login',
     component: Login
+  },
+  {
+    path: '/search',
+    component: Search
   }
 
 ]

@@ -3,7 +3,11 @@
   <!-- 三十五   list的基础用法-->
 
   <van-cell-group>
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+    <van-pull-refresh
+      v-model="refreshing"
+      @refresh="onRefresh"
+      ref="pullrefresh"
+    >
       <van-list
         v-model="loading"
         :finished="finished"
@@ -13,13 +17,15 @@
         <!-- 二十五 组件单元格的封装 -->
         <!-- <van-cell title="单元格" value="内容" label="描述信息" /> -->
         <!-- 三十四 数据的循环遍历 -->
-        <van-cell
+        <!-- <van-cell
           v-for="(item, index) in articleList"
           :key="index"
           :title="item.title"
           value="内容"
           label="描述信息"
-        />
+        /> -->
+        <ArticleItem v-for="(item, index) in articleList"
+          :key="index" :article="item"></ArticleItem>
         <!-- <van-cell title="单元格" value="内容" label="描述信息" />
     <van-cell title="单元格" value="内容" label="描述信息" />
     <van-cell title="单元格" value="内容" label="描述信息" />
@@ -39,8 +45,12 @@
 </template>
 
 <script>
+import ArticleItem from '@/components/ArticleItem.vue'
 // 三十二 拿取数据，先引入
 import { getArticleList } from '@/api/home'
+// 全局变量
+let ele = null
+let scrollTop = 0
 export default {
   // 三十一
   // name: 'active',
@@ -56,6 +66,21 @@ export default {
   created () {
     // 三十三
     this.getArticleList()
+  },
+
+  // 操作Dom时用 mounted
+  mounted () {
+    // $el是每个组件渲染后，Dom元素  $el就是渲染好的根标签
+    console.log(this.$refs.pullrefresh)
+    ele = this.$refs.pullrefresh.$el
+    this.$refs.pullrefresh.$el.addEventListener('scroll', function () {
+      // console.log(this.scrollTop)
+      scrollTop = this.scrollTop // 位置
+    })
+  },
+  activated () {
+    //
+    ele.scrollTop = scrollTop
   },
   data () {
     // 三十三
@@ -122,7 +147,9 @@ export default {
   computed: {},
   watch: {},
   filters: {},
-  components: {}
+  components: {
+    ArticleItem
+  }
 }
 </script>
 

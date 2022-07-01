@@ -17,11 +17,19 @@ export const getArticleList = ({ channel_id, timestamp }) => {
     }
   })
 }
-
-// lllll
-// 获取所有的频频列表数据（按需导出 export 表达式）
 export const getAllArticleList = () => {
   return request({
     url: 'channels'
+  })
+}
+// lllll
+// 获取所有的频频列表数据（按需导出 export 表达式）
+export const saveChannels = (channels) => {
+  return request({
+    url: 'user/channels',
+    method: 'PUT',
+    data: {
+      channels
+    }
   })
 }
