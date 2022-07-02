@@ -3,7 +3,7 @@
     <!-- 二十七 fixed定位 -->
     <van-nav-bar fixed>
       <template #title>
-        <van-button type="info" icon="search" class="search-btn">
+        <van-button  type="info" icon="search" class="search-btn" to="/search">
           搜素
         </van-button>
       </template>
@@ -84,7 +84,7 @@ export default {
     // 二十一
     // 1、没有登录第一次打开app，本地存储没有， 只能发送ajax请求
     // 2、没有登录，但是第二次打开，有可能修改过 这样的话本地存储就有值，就去本地存储拿
-    // 3、有登录就发送ajax拿
+    // 3、有登录就去
     async getMyChannels () {
       const channels = getItem(CHANNELS)
       if (!(this.$store.state.user && this.$store.state.user.token) && channels) {

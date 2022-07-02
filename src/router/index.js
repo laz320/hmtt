@@ -11,7 +11,7 @@ const My = () => import('@/views/My')
 
 // 12
 const Login = () => import('@/views/Login')
-const Search = () => ('@/views/Search')
+const Search = () => import('@/views/Search')
 
 Vue.use(VueRouter)
 
