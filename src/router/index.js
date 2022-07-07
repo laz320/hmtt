@@ -2,12 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // 2
 import Layout from '@/views/Layout'
+// import { getArticleList } from '@/api/home'
 
 // 10 懒加载写法
 const Home = () => import('@/views/Home')
 const Video = () => import('@/views/Video')
 const Question = () => import('@/views/Question')
 const My = () => import('@/views/My')
+const Article = () => import('@/views/Article')
 
 // 12
 const Login = () => import('@/views/Login')
@@ -49,6 +51,12 @@ const routes = [
   {
     path: '/search',
     component: Search
+  },
+  {
+    path: '/article/:article_id',
+    component: Article,
+    name: 'article',
+    props: true // params相关的路由加props:true可以让路由和组件解耦
   }
 
 ]

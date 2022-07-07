@@ -16,15 +16,23 @@ import MyIcon from '@/components/MyIcon.vue'
 
 // 一次性吧fifters/index.js中所有的按需导出全部导出来  作为obj的属性
 import * as obj from '@/fifters'
+
+import FollowUser from '@/components/FollowUser.vue'
+
+import '@/components'
+
 Object.keys(obj).forEach(key => {
   Vue.filter(key, obj[key])
 })
 // 7 字体图标
 // import '@/styles/icon.less'
+// 架构性代码
 Vue.component('MyIcon', MyIcon)
 Vue.use(Vant)
-
 Vue.config.productionTip = false
+
+// 全局组件的方式
+Vue.component(FollowUser.name, FollowUser)
 
 new Vue({
   router,
