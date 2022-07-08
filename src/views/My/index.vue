@@ -22,13 +22,13 @@
           <!-- 十四 -->
           <span>{{ userInfo.name }}</span>
         </div>
-        <div class="button">编辑资料</div>
+        <div class="button" @click="$router.push('/user')">编辑资料</div>
       </div>
       <ul class="list">
         <li>
           <p>8</p>
           <!-- <p>{{userInfo.art_count}}</p> -->
-                    <p>头条</p>
+          <p>头条</p>
         </li>
         <li>
           <p>66</p>

@@ -14,6 +14,7 @@ const Article = () => import('@/views/Article')
 // 12
 const Login = () => import('@/views/Login')
 const Search = () => import('@/views/Search')
+const User = () => import('@/views/User')
 
 Vue.use(VueRouter)
 
@@ -57,6 +58,10 @@ const routes = [
     component: Article,
     name: 'article',
     props: true // params相关的路由加props:true可以让路由和组件解耦
+  },
+  {
+    path: '/user',
+    component: User
   }
 
 ]
